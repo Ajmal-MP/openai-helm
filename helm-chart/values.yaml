@@ -1,6 +1,17 @@
 namespace:
   name: default
 
+gateway:
+  name: istio-ingress-gateway
+
+
+VirtualService:
+    hosts: web.aj.com
+       
+
+     
+
+
 service:
   active: active-service
   preview: preview-service
@@ -17,5 +28,5 @@ rollout:
   containers:
     name: openai-app-container
     image: ajmaldocker07/openai-node
-    tag: 19
+    tag: 23
 
