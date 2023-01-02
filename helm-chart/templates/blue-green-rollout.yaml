@@ -20,6 +20,17 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
+        env:
+        - name: PORT
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: PORT
+        - name: OPEN_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: OPEN_API_KEY  
   strategy:
     blueGreen: 
       activeService: {{ .Values.service.active }}
