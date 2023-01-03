@@ -23,7 +23,7 @@ rollout:
   labels:
     app: openai-app
   # progressdeadlineseconds: 600
-  replicas: 3
+  replicas: 2
   revisionhistorylimit: 2
   containers:
     name: openai-app-container
