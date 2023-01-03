@@ -28,5 +28,5 @@ rollout:
   containers:
     name: openai-app-container
     image: ajmaldocker07/openai-node
-    tag: 25
+    tag: 26
 
