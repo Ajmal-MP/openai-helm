@@ -8,24 +8,6 @@ spec:
   gateways:
   - {{ .Values.gateway.name }}
   http:
-  # - match:
-  #   - uri:
-  #       prefix: /argocd
-  #   route:
-  #     - destination:
-  #         host: argocd-server.argocd.svc.cluster.local
-  #         port:
-  #           number: 80
-
-  - match:
-    - uri:
-        prefix: /hello
-    route:
-      - destination:
-          host: preview-service.default.svc.cluster.local
-          port:
-            number: 5000
-
   - match:
     - uri:
         prefix: /kiali
@@ -39,3 +21,20 @@ spec:
         host: active-service.default.svc.cluster.local
         port:
           number: 5000
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: vs-preview
+spec:
+  hosts:
+  - web.preview.com
+  gateways:
+  - istio-ingress-gateway
+  http:
+    - route:
+       - destination:
+           host: preview-service.default.svc.cluster.local
+           port:
+              number: 5000
